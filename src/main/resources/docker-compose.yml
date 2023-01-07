@@ -1,0 +1,20 @@
+version: '3'
+services:
+  phone-book-app-mysql:
+    image: mysql:5.7
+    platform: linux/x86_64
+    environment:
+      - MYSQL_DATABASE=phone_book_app
+      - MYSQL_PASSWORD=root
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - "3306:3306"
+
+  phone-book-app-redis:
+    image: redis:6.2-alpine
+    restart: always
+    ports:
+      - '6379:6379'
+
+# cd /Users/mustafasabitsipahi/IdeaProjects/Web-Based-Phone-Book-App/src/main/resources
+# docker-compose up -d
