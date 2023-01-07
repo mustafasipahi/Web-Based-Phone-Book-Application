@@ -21,8 +21,8 @@ public class SwaggerConfiguration implements WebMvcConfigurer {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
             .select()
-            .apis(RequestHandlerSelectors.basePackage("com.controller"))
-            .paths(PathSelectors.regex("/.*"))
+            .apis(RequestHandlerSelectors.any())
+            .paths(PathSelectors.any())
             .build()
             .apiInfo(apiInfo());
     }
@@ -40,7 +40,7 @@ public class SwaggerConfiguration implements WebMvcConfigurer {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-            .title("Web Based Phone Book com.Application")
+            .title("Web Based Phone Book Application")
             .contact(new Contact("Mustafa Sipahi", "https://www.linkedin.com/in/mustafa-sipahi/", ""))
             .license("Apache 2.0")
             .version("1.0.0")

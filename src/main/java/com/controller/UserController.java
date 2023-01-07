@@ -36,7 +36,7 @@ public class UserController {
     }
 
     @ApiOperation(value = "Detail to User Entity")
-    @GetMapping("detail/{id}")
+    @GetMapping("/detail/{id}")
     public UserDto detail(@PathVariable Long id) {
         return userService.detail(id);
     }

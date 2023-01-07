@@ -11,7 +11,7 @@ import java.util.Date;
 @Setter
 @Builder
 @Entity
-@Table(name = "user", uniqueConstraints = {@UniqueConstraint(columnNames = {"first_name, last_name"})})
+@Table(name = "user")
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserEntity {
