@@ -1,7 +1,10 @@
 version: '3'
 services:
+
   phone-book-app-mysql:
+    container_name: phone-book-app-mysql
     image: mysql:5.7
+    restart: always
     platform: linux/x86_64
     environment:
       - MYSQL_DATABASE=phone_book_app
@@ -9,12 +12,34 @@ services:
       - MYSQL_ROOT_PASSWORD=root
     ports:
       - "3306:3306"
+    networks:
+      - bridge
 
   phone-book-app-redis:
+    container_name: phone-book-app-redis
     image: redis:6.2-alpine
     restart: always
     ports:
       - '6379:6379'
+    networks:
+      - bridge
 
-# cd /Users/mustafasabitsipahi/IdeaProjects/Web-Based-Phone-Book-App/src/main/resources
-# docker-compose up -d
+  phone-book-app:
+    container_name: phone-book-app
+    image: phone-book-app:1
+    build:
+      context: ../.
+      dockerfile: /Users/mustafasabitsipahi/IdeaProjects/Web-Based-Phone-Book-App/Dockerfile
+    ports:
+      - "8080:8080"
+
+networks:
+  bridge:
+    driver: bridge
+volumes:
+  phone-book-app-mysql:
+    driver: local
+  phone-book-app-redis:
+    driver: local
+
+# docker-compose -f /Users/mustafasabitsipahi/IdeaProjects/Web-Based-Phone-Book-App/src/main/resources/docker-compose.yml up -d
