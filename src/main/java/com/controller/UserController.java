@@ -1,10 +1,12 @@
 package com.controller;
 
 import com.dto.UserDto;
+import com.dto.UserSearchDto;
 import com.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -39,5 +41,10 @@ public class UserController {
     @GetMapping("/detail/{id}")
     public UserDto detail(@PathVariable Long id) {
         return userService.detail(id);
+    }
+
+    @GetMapping("/search")
+    public Page<UserDto> search(@ModelAttribute UserSearchDto dto) {
+        return userService.search(dto);
     }
 }
