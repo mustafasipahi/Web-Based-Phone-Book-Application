@@ -1,16 +1,19 @@
 package com.dto;
 
 import com.validator.ValidPhone;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 @Getter
 @Setter
 @Builder
-public class UserDto {
+@NoArgsConstructor
+@AllArgsConstructor
+public class UserDto implements Serializable {
+
+    private static final long serialVersionUID = -8857065641344829978L;
 
     private Long id;
     @NotNull
