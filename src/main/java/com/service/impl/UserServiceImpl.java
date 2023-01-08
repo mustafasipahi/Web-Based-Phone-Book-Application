@@ -48,12 +48,14 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @CacheEvict(value = USER_DETAIL_CACHE, key = "#userDto.id", allEntries = true)
     public void update(UserDto userDto) {
-        updateUserContact(userDto.getId(), userDto.getPhone());
-
         final UserEntity userEntity = userRepository.findById(userDto.getId())
             .orElseThrow(UserNotFoundException::new);
 
+        updateUserContact(userDto.getId(), userDto.getPhone());
+
         if (checkFirstNameOrLastNameChanged(userEntity, userDto)) {
+            userEntity.setFirstName(userDto.getFirstName());
+            userEntity.setLastName(userDto.getLastName());
             userRepository.save(userEntity);
         }
     }
@@ -62,8 +64,11 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @CacheEvict(value = USER_DETAIL_CACHE, key = "#userId", allEntries = true)
     public void delete(Long userId) {
-        deleteUserContact(userId);
-        userRepository.deleteById(userId);
+        final UserEntity userEntity = userRepository.findById(userId)
+            .orElseThrow(UserNotFoundException::new);
+
+        deleteUserContact(userEntity.getUserContact().getId());
+        userRepository.deleteById(userEntity.getId());
     }
 
     @Override
@@ -104,8 +109,8 @@ public class UserServiceImpl implements UserService {
                !userDto.getLastName().equals(userEntity.getLastName());
     }
 
-    private void deleteUserContact(Long userId) {
-        userContactService.delete(userId);
+    private void deleteUserContact(Long userContactId) {
+        userContactService.delete(userContactId);
     }
 
     private UserDto convertToUserDto(UserEntity userEntity) {

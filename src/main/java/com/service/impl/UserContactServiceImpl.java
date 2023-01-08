@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class UserContactServiceImpl implements UserContactService {
 
-    private UserContactRepository userContactRepository;
+    private final UserContactRepository userContactRepository;
 
     @Override
     public UserContactEntity save(UserContactDto userContactDto) {
@@ -32,7 +32,7 @@ public class UserContactServiceImpl implements UserContactService {
     }
 
     @Override
-    public void delete(Long userId) {
-        userContactRepository.deleteByUserId(userId);
+    public void delete(Long userContactId) {
+        userContactRepository.deleteById(userContactId);
     }
 }

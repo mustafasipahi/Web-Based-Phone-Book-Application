@@ -28,7 +28,7 @@ public class UserEntity {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "user_contact_id", referencedColumnName = "id")
     private UserContactEntity userContact;
 

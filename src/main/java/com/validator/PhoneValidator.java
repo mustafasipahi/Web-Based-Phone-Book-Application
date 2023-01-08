@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 @RequiredArgsConstructor
 public class PhoneValidator implements ConstraintValidator<ValidPhone, String> {
 
-    private static final String TURKEY_PHONE_REGEX = "^(((\\+|00)?(90)|0)[-| ]?)?((5\\d{2})[-| ]?(\\d{3})[-| ]?(\\d{2})[-| ]?(\\d{2}))$\n";
+    private static final String TURKEY_PHONE_REGEX = "^\\d{10}$";
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
@@ -23,7 +23,6 @@ public class PhoneValidator implements ConstraintValidator<ValidPhone, String> {
 
         Pattern pattern = Pattern.compile(TURKEY_PHONE_REGEX);
         Matcher matcher = pattern.matcher(value);
-        //return matcher.matches();
-        return true;
+        return matcher.matches();
     }
 }
