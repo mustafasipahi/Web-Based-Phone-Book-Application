@@ -1,12 +1,7 @@
 FROM openjdk:8
-ENV MY_DIR /usr/src/mymaven
-
-RUN apt-get update && apt-get install -y graphicsmagick
-
-WORKDIR $MY_DIR
-ADD target/Web-Based-Phone-Book-App-1.0-SNAPSHOT.jar $MY_DIR/my_app.jar
-ENTRYPOINT ["java", "-jar", "/usr/src/mymaven/my_app.jar"]
 EXPOSE 8080
+ADD target/Web-Based-Phone-Book-App-1.0-SNAPSHOT.jar Web-Based-Phone-Book-App-1.0-SNAPSHOT.jar
+ENTRYPOINT ["java", "-jar", "Web-Based-Phone-Book-App-1.0-SNAPSHOT.jar"]
 
 # docker build -t my_phone_book_app -f Dockerfile .
 # docker ps
