@@ -8,20 +8,17 @@ services:
     ports:
       - "8080:8080"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://127.0.0.1:3306/phone_book_app
+      SPRING_DATASOURCE_URL: jdbc:mysql://phone-book-app-mysql:3306/phone_book_app?autoReconnect=true&useSSL=false
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
       SPRING_JPA_HIBERNATE_DDL_AUTO: create
     depends_on:
       - phone-book-app-mysql
       - phone-book-app-redis
-    networks:
-      - bridge
 
   phone-book-app-mysql:
     container_name: phone-book-app-mysql
     image: mysql:5.7
-    restart: always
     platform: linux/x86_64
     environment:
       - MYSQL_DATABASE=phone_book_app
@@ -29,20 +26,11 @@ services:
       - MYSQL_ROOT_PASSWORD=root
     ports:
       - "3306:3306"
-    networks:
-      - bridge
 
   phone-book-app-redis:
     container_name: phone-book-app-redis
     image: redis:6.2-alpine
-    restart: always
     ports:
       - '6379:6379'
-    networks:
-      - bridge
-
-networks:
-  bridge:
-    driver: bridge
 
 # docker-compose -f /Users/mustafasabitsipahi/IdeaProjects/Web-Based-Phone-Book-App/docker-compose.yml up -d
