@@ -17,12 +17,16 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfiguration implements WebMvcConfigurer {
 
+    private static final String NAME = "Mustafa Sipahi";
+    private static final String URL = "https://www.linkedin.com/in/mustafa-sipahi/";
+    private static final String MAIL = "mustafasipahi193@gmail.com";
+
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
             .select()
-            .apis(RequestHandlerSelectors.any())
-            .paths(PathSelectors.any())
+            .apis(RequestHandlerSelectors.basePackage("com.controller"))
+            .paths(PathSelectors.regex("/.*"))
             .build()
             .apiInfo(apiInfo());
     }
@@ -41,7 +45,7 @@ public class SwaggerConfiguration implements WebMvcConfigurer {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
             .title("Web Based Phone Book Application")
-            .contact(new Contact("Mustafa Sipahi", "https://www.linkedin.com/in/mustafa-sipahi/", ""))
+            .contact(new Contact(NAME, URL, MAIL))
             .license("Apache 2.0")
             .version("1.0.0")
             .build();

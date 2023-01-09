@@ -7,8 +7,6 @@ g
 7src/main/java/com/configuration/RedisConfiguration.java,5/1/5128bc00f6f1db0c5cc4f40751185f4c237c314c
 d
 4src/main/java/com/configuration/RedisProperties.java,b/4/b4062e829ebe508b9cb35a99e0c89a46d4925596
-i
-9src/main/java/com/configuration/SwaggerConfiguration.java,0/b/0bf14ea072fff767f3ff00d27e53c988fd4d5738
 h
 8src/main/java/com/configuration/UserRedisProperties.java,5/4/540bd22e24f350ee89e0ff54e5cc4f008edc1929
 ^

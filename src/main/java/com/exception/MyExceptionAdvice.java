@@ -10,7 +10,7 @@ import static com.constant.ErrorCodes.UNKNOWN_ERROR;
 
 @Slf4j
 @ControllerAdvice
-public class MyExceptionHandler {
+public class MyExceptionAdvice {
 
     @ExceptionHandler(BaseMyException.class)
     public ResponseEntity<ErrorResponse> handleException(BaseMyException e) {
