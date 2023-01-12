@@ -4,6 +4,7 @@ services:
   phone-book-app:
     container_name: phone-book-app
     image: phone-book-app:1
+    restart: always
     build: ./
     ports:
       - "8080:8080"
@@ -19,18 +20,28 @@ services:
   phone-book-app-mysql:
     container_name: phone-book-app-mysql
     image: mysql:5.7
+    restart: always
     platform: linux/x86_64
     environment:
       - MYSQL_DATABASE=phone_book_app
       - MYSQL_PASSWORD=root
       - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - ./mysql:/var/lib/phone-book-app-mysql
     ports:
       - "3306:3306"
+    expose:
+      - 3306
 
   phone-book-app-redis:
     container_name: phone-book-app-redis
     image: redis:6.2-alpine
+    restart: always
+    volumes:
+      - ./mysql:/var/lib/phone-book-app-redis
     ports:
       - '6379:6379'
+    expose:
+      - 6379
 
 # docker-compose up -d
