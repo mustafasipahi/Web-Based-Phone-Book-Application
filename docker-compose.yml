@@ -33,4 +33,4 @@ services:
     ports:
       - '6379:6379'
 
-# docker-compose -f /Users/mustafasabitsipahi/IdeaProjects/Web-Based-Phone-Book-App/docker-compose.yml up -d
+# docker-compose up -d
