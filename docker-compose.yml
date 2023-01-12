@@ -13,6 +13,8 @@ services:
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
       SPRING_JPA_HIBERNATE_DDL_AUTO: create
+      REDIS_HOST: phone-book-app-redis
+      REDIS_PORT: 6379
     depends_on:
       - phone-book-app-mysql
       - phone-book-app-redis
@@ -44,4 +46,5 @@ services:
     expose:
       - 6379
 
+# docker rmi $(docker images -a -q)
 # docker-compose up -d
