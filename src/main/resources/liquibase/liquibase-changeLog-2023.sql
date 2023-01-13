@@ -1,25 +1,26 @@
 --liquibase formatted sql
---changeset mustafa_sipahi:12-01-2023 12:00
-create table if not exists phone_book_app.user_contact
+
+--changeset mustafa_sipahi:12-01-2023_12:00
+CREATE TABLE user_contact
 (
-    id                 bigint auto_increment
-    primary key,
-    phone              varchar(256) not null,
-    last_modified_date date         null,
-    created_date       date         null,
-    constraint phone
-    unique (phone)
+    id                 BIGINT AUTO_INCREMENT PRIMARY KEY,
+    phone              VARCHAR(64) NOT NULL,
+    last_modified_date DATE        NULL,
+    created_date       DATE        NOT NULL,
+    CONSTRAINT phone UNIQUE (phone)
 );
 
-create table if not exists phone_book_app.user
+CREATE TABLE user
 (
-    id                 bigint auto_increment
-    primary key,
-    first_name         varchar(256) null,
-    last_name          varchar(256) null,
-    user_contact_id    bigint       null,
-    last_modified_date datetime     null,
-    created_date       datetime     null,
-    constraint fk_user_contact
-    foreign key (user_contact_id) references phone_book_app.user_contact (id)
+    id                 BIGINT AUTO_INCREMENT PRIMARY KEY,
+    first_name         VARCHAR(256) NOT NULL,
+    last_name          VARCHAR(256) NOT NULL,
+    user_contact_id    BIGINT       NULL,
+    last_modified_date DATETIME     NULL,
+    created_date       DATETIME     NOT NULL,
+    CONSTRAINT fk_user_contact FOREIGN KEY (user_contact_id) REFERENCES phone_book_app.user_contact (id)
 );
+
+--changeset mustafa_sipahi:13-01-2023_12:00
+INSERT INTO user(first_name, last_name, user_contact_id, last_modified_date, created_date)
+VALUES ('Mustafa', 'Sipahi', NULL, NULL, NOW());
