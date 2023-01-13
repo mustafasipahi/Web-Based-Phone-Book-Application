@@ -12,7 +12,7 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://phone-book-app-mysql:3306/phone_book_app?autoReconnect=true&useSSL=false
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
-      SPRING_JPA_HIBERNATE_DDL_AUTO: create
+      SPRING_JPA_HIBERNATE_DDL_AUTO: none
       REDIS_HOST: phone-book-app-redis
       REDIS_PORT: 6379
     depends_on:
@@ -25,9 +25,10 @@ services:
     restart: always
     platform: linux/x86_64
     environment:
-      - MYSQL_DATABASE=phone_book_app
-      - MYSQL_PASSWORD=root
-      - MYSQL_ROOT_PASSWORD=root
+      MYSQL_URL: jdbc:mysql://phone-book-app-mysql:3306/phone_book_app?autoReconnect=true&useSSL=false
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: user_leave_tracking
     volumes:
       - ./mysql:/var/lib/phone-book-app-mysql
     ports:
@@ -46,5 +47,12 @@ services:
     expose:
       - 6379
 
+# docker build -t user_leave_tracking_app -f Dockerfile .
+# docker ps
+# docker images -a
+# docker network ls
+# docker run --name user_leave_tracking_app -p 8080:8080 user_leave_tracking_app
+# docker image rm user_leave_tracking_app
 # docker rmi $(docker images -a -q)
+
 # docker-compose up -d
