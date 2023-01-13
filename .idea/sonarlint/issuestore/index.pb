@@ -57,3 +57,12 @@ f
 6src/test/java/com/controller/UserControllerITTest.java,1/4/1450d6f8841fa06a89eb6b4d8b463ade9d494b82
 9
 	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+h
+8src/main/java/com/configuration/UserRedisProperties.java,5/4/540bd22e24f350ee89e0ff54e5cc4f008edc1929
+:
+
+Dockerfile,6/6/6651ddff6eb82c840ced7c1dddee15c6e1913dd4
+B
+docker-compose.yml,3/5/35b8c13cf2eb2a194eada000eb310d65aed53b2a
+_
+/src/main/java/com/entity/UserContactEntity.java,3/6/3606f23963c57240b8fc53ddb99d0d448c3291b5

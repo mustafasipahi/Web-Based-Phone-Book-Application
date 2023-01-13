@@ -1,0 +1,4 @@
+databaseChangeLog:
+  - include:
+      file: liquibase-changeLog-2023.sql
+      relativeToChangelogFile: true

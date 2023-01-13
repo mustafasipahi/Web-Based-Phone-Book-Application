@@ -20,7 +20,7 @@ spring:
     serialization:
       indent-output: true
   liquibase:
-    change-log: classpath:liquibase/changelog-master.xml
+    change-log: classpath:liquibase/changelog-master.yml
     enabled: true
 
 redis-config:
