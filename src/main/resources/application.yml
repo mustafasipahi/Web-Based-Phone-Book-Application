@@ -19,6 +19,9 @@ spring:
   jackson:
     serialization:
       indent-output: true
+  liquibase:
+    change-log: classpath:liquibase/changelog-master.xml
+    enabled: true
 
 redis-config:
   host: ${REDIS_HOST:localhost}
