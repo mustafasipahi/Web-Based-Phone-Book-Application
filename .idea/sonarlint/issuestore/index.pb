@@ -5,8 +5,6 @@ g
 7src/main/java/com/configuration/RedisConfiguration.java,5/1/5128bc00f6f1db0c5cc4f40751185f4c237c314c
 d
 4src/main/java/com/configuration/RedisProperties.java,b/4/b4062e829ebe508b9cb35a99e0c89a46d4925596
-h
-8src/main/java/com/configuration/UserRedisProperties.java,5/4/540bd22e24f350ee89e0ff54e5cc4f008edc1929
 Z
 *src/main/java/com/constant/ErrorCodes.java,e/7/e704188c417fe7e603eea556b0c56191234691c1
 f
@@ -37,8 +35,6 @@ i
 0src/main/java/com/repository/UserRepository.java,2/a/2aa09d5a61dd3558bf4d68507a7a8025b7e44dfd
 X
 (src/main/java/com/entity/UserEntity.java,a/7/a7480aa519ced7ccc0c86e9ba75c718b4dded19a
-_
-/src/main/java/com/entity/UserContactEntity.java,3/6/3606f23963c57240b8fc53ddb99d0d448c3291b5
 R
 "src/main/java/com/dto/UserDto.java,8/b/8b7d3d93b3f719dc9d3e7b241c9c2b399ebf1835
 [

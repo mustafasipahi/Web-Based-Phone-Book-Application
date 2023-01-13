@@ -1,23 +1,6 @@
 version: '3'
 services:
 
-  phone-book-app:
-    container_name: phone-book-app
-    image: phone-book-app:1
-    restart: always
-    build: ./
-    ports:
-      - "8080:8080"
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://phone-book-app-mysql:3306/phone_book_app?autoReconnect=true&useSSL=false
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: root
-      SPRING_JPA_HIBERNATE_DDL_AUTO: none
-      REDIS_HOST: phone-book-app-redis
-      REDIS_PORT: 6379
-    depends_on:
-      - phone-book-app-mysql
-      - phone-book-app-redis
 
   phone-book-app-mysql:
     container_name: phone-book-app-mysql

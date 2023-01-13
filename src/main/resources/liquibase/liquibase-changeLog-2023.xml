@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="20220103 15:41" author="mustafasipahi">
+        <createTable tableName="user_contact">
+            <column autoIncrement="true" name="id" type="BIGINT(20)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="phone" type="VARCHAR(256)">
+                <constraints unique="true" nullable="false"/>
+            </column>
+            <column name="last_modified_date" type="DATE"/>
+            <column name="created_date" type="DATE"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="20220103 15:42" author="mustafasipahi">
+        <createTable tableName="user">
+            <column autoIncrement="true" name="id" type="BIGINT(20)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="first_name" type="VARCHAR(256)"/>
+            <column name="last_name" type="VARCHAR(256)"/>
+            <column name="user_contact_id" type="BIGINT"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column name="created_date" type="DATETIME"/>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="user_contact_id"
+                                 baseTableName="user"
+                                 constraintName="fk_user_contact"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user_contact"/>
+    </changeSet>
+
+</databaseChangeLog>
