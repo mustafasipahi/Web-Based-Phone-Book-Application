@@ -9,7 +9,7 @@ services:
     ports:
       - "8080:8080"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://phone-book-app-mysql:3306/phone_book_app?autoReconnect=true&useSSL=false
+      SPRING_DATASOURCE_URL: jdbc:mysql://phone-book-app-mysql:3306/phone_book_app?autoReconnect=true&useSSL=false&createDatabaseIfNotExist=true
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
       SPRING_JPA_HIBERNATE_DDL_AUTO: none
@@ -25,10 +25,10 @@ services:
     restart: always
     platform: linux/x86_64
     environment:
-      MYSQL_URL: jdbc:mysql://phone-book-app-mysql:3306/phone_book_app?autoReconnect=true&useSSL=false
+      MYSQL_URL: jdbc:mysql://phone-book-app-mysql:3306/phone_book_app?autoReconnect=true&useSSL=false&createDatabaseIfNotExist=true
       MYSQL_PASSWORD: root
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: user_leave_tracking
+      MYSQL_DATABASE: phone_book_app
     volumes:
       - ./mysql:/var/lib/phone-book-app-mysql
     ports:
@@ -47,12 +47,28 @@ services:
     expose:
       - 6379
 
-# docker build -t user_leave_tracking_app -f Dockerfile .
+  liquibase:
+    container_name: liquibase
+    image: liquibase/liquibase
+    restart: always
+    depends_on:
+      - phone-book-app-mysql
+    environment:
+      MYSQL_DB: phone_book_app
+    volumes:
+      - ./config/db:/liquibase/changelog-master
+      - ./liquibase_policy_init.sh:/liquibase/liquibase_policy_init.sh:ro
+    command: [
+      '-c',
+      './liquibase_policy_init.sh'
+    ]
+
+# docker build -t phone-book-app -f Dockerfile .
 # docker ps
 # docker images -a
 # docker network ls
-# docker run --name user_leave_tracking_app -p 8080:8080 user_leave_tracking_app
-# docker image rm user_leave_tracking_app
+# docker run --name phone-book-app -p 8080:8080 user_leave_tracking_app
+# docker image rm phone-book-app
 # docker rmi $(docker images -a -q)
 
 # docker-compose up -d
