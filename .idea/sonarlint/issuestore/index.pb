@@ -9,8 +9,6 @@ f
 6src/main/java/com/specification/UserSpecification.java,5/7/573bd1b644acb4d90d910ad7935d771e35b20526
 _
 /src/main/java/com/validator/PhoneValidator.java,5/d/5df1ac96efb3676d207058a54fc8c99c60922f87
-a
-1src/main/java/com/service/UserContactService.java,d/e/de635d0d94a4c1209b181d9d86630173b83d7b4d
 n
 >src/test/java/com/service/impl/UserContactServiceImplTest.java,4/f/4f1b012de68517a1115e1b114d94ec4a96ce1c7e
 j
@@ -43,5 +41,3 @@ R
 	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 h
 8src/main/java/com/configuration/UserRedisProperties.java,5/4/540bd22e24f350ee89e0ff54e5cc4f008edc1929
-_
-/src/main/java/com/entity/UserContactEntity.java,3/6/3606f23963c57240b8fc53ddb99d0d448c3291b5
