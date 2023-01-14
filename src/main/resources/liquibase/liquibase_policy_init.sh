@@ -1,7 +1,7 @@
 \liquibase \
-  --driver=com.mysql.cj.jdbc.Driver \
-  --url=jdbc:mysql://"${MYSQL_HOST}":3306/"${MYSQL_DB}" \
+  --url=jdbc:mysql://phone-book-app-mysql:3306/phone_book_app?autoReconnect=true \
+  --username=root \
+  --password=root \
   --changeLogFile=changelog/dbchangelog-master.yaml \
-  --username="${MYSQL_USER}" \
-  --password="${MYSQL_PASSWORD}" \
+  --driver=com.mysql.cj.jdbc.Driver \
   update

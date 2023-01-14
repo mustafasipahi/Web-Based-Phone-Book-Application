@@ -21,6 +21,8 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 import static com.constant.CacheConstants.USER_DETAIL_CACHE;
 
 @Service
@@ -67,7 +69,7 @@ public class UserServiceImpl implements UserService {
         final UserEntity userEntity = userRepository.findById(userId)
             .orElseThrow(UserNotFoundException::new);
 
-        deleteUserContact(userEntity.getUserContact().getId());
+        deleteUserContact(userEntity.getUserContact());
         userRepository.deleteById(userEntity.getId());
     }
 
@@ -109,16 +111,22 @@ public class UserServiceImpl implements UserService {
                !userDto.getLastName().equals(userEntity.getLastName());
     }
 
-    private void deleteUserContact(Long userContactId) {
-        userContactService.delete(userContactId);
+    private void deleteUserContact(UserContactEntity userContactEntity) {
+        Optional.ofNullable(userContactEntity)
+            .map(UserContactEntity::getId)
+            .ifPresent(userContactService::delete);
     }
 
     private UserDto convertToUserDto(UserEntity userEntity) {
+
+        final UserContactEntity userContact = Optional.ofNullable(userEntity.getUserContact())
+            .orElseGet(UserContactEntity::new);
+
         return UserDto.builder()
             .id(userEntity.getId())
             .firstName(userEntity.getFirstName())
             .lastName(userEntity.getLastName())
-            .phone(userEntity.getUserContact().getPhone())
+            .phone(userContact.getPhone())
             .build();
     }
 }

@@ -43,24 +43,6 @@ services:
     expose:
       - 6379
 
-  liquibase:
-    container_name: liquibase
-    image: liquibase/liquibase
-    restart: always
-    depends_on:
-      - phone-book-app-mysql
-    environment:
-      MYSQL_HOST: phone-book-app-mysql
-      MYSQL_DB: phone_book_app
-      MYSQL_USER: root
-      MYSQL_PASSWORD: root
-    volumes:
-      - ./src/main/resources/liquibase:/liquibase
-    command: [
-      '-c',
-      '.liquibase/liquibase_policy_init.sh'
-    ]
-
 # docker build -t phone-book-app -f Dockerfile .
 # docker ps
 # docker images -a

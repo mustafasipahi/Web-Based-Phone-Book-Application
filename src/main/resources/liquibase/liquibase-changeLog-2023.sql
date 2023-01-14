@@ -23,4 +23,8 @@ CREATE TABLE user
 
 --changeset mustafa_sipahi:13-01-2023_12:00
 INSERT INTO user(first_name, last_name, user_contact_id, last_modified_date, created_date)
-VALUES ('Mustafa', 'Sipahi', NULL, NULL, NOW());
+VALUES ('Mustafa', 'Sipahi', 1, NULL, NOW());
+
+--changeset mustafa_sipahi:14-01-2023_12:00
+INSERT INTO user_contact(phone, last_modified_date, created_date)
+VALUES ('5465533993', NOW(), NOW())
