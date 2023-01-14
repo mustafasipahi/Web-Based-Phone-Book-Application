@@ -29,8 +29,6 @@ services:
       MYSQL_PASSWORD: root
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: phone_book_app
-    volumes:
-      - ./mysql:/var/lib/phone-book-app-mysql
     ports:
       - "3306:3306"
     expose:
@@ -40,8 +38,6 @@ services:
     container_name: phone-book-app-redis
     image: redis:6.2-alpine
     restart: always
-    volumes:
-      - ./mysql:/var/lib/phone-book-app-redis
     ports:
       - '6379:6379'
     expose:
@@ -54,13 +50,15 @@ services:
     depends_on:
       - phone-book-app-mysql
     environment:
+      MYSQL_HOST: phone-book-app-mysql
       MYSQL_DB: phone_book_app
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
     volumes:
-      - ./config/db:/liquibase/changelog-master
-      - ./liquibase_policy_init.sh:/liquibase/liquibase_policy_init.sh:ro
+      - ./src/main/resources/liquibase:/liquibase
     command: [
       '-c',
-      './liquibase_policy_init.sh'
+      '.liquibase/liquibase_policy_init.sh'
     ]
 
 # docker build -t phone-book-app -f Dockerfile .
