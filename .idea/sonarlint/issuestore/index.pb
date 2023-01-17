@@ -55,9 +55,5 @@ f
 6src/test/java/com/controller/UserControllerITTest.java,1/4/1450d6f8841fa06a89eb6b4d8b463ade9d494b82
 c
 3src/main/java/com/service/impl/UserServiceImpl.java,f/2/f23437854686287f95932a7b3aed1a2a37c998d3
-_
-/src/main/java/com/entity/UserContactEntity.java,3/6/3606f23963c57240b8fc53ddb99d0d448c3291b5
-X
-(src/main/java/com/entity/UserEntity.java,a/7/a7480aa519ced7ccc0c86e9ba75c718b4dded19a
 a
 1src/main/java/com/service/UserContactService.java,d/e/de635d0d94a4c1209b181d9d86630173b83d7b4d

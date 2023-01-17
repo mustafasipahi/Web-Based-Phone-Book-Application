@@ -21,6 +21,8 @@ CREATE TABLE user
     CONSTRAINT fk_user_contact FOREIGN KEY (user_contact_id) REFERENCES phone_book_app.user_contact (id)
 );
 
+CREATE INDEX IDX_CODE ON user (first_name);
+
 --changeset mustafa_sipahi:14-01-2023_12:00
 INSERT INTO user_contact(phone, last_modified_date, created_date)
 VALUES ('5465533993', NOW(), NOW())
