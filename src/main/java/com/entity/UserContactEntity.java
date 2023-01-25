@@ -19,7 +19,7 @@ import java.util.Date;
 public class UserContactEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "phone", nullable = false)
